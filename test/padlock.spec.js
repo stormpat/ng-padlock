@@ -16,15 +16,14 @@ describe('factory: PadlockFactory', function() {
     spyOn($rootScope, '$broadcast').andCallThrough();
   });
 
-  it('can get an instance of my factory', inject(function(PadlockFactory) {
+  it('can get an instance of my factory', inject(function() {
     expect(PadlockFactory).toBeDefined();
   }));
 
-  it("should allow to be extended via config an object", inject(function(PadlockFactory) {
+  it("should allow to be extended via config an object", inject(function() {
     spyOn(PadlockFactory, 'options');
     // Set fake options
     var opts = { authFailed: 'FAILED', authSuccess: 'SUCCESS' };
-
     PadlockFactory.options(opts);
     expect(PadlockFactory.options).toHaveBeenCalled();
   }));
