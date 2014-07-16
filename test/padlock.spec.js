@@ -16,11 +16,15 @@ describe('factory: PadlockFactory', function() {
     spyOn($rootScope, '$broadcast').andCallThrough();
   });
 
-  it('can get an instance of my factory', inject(function() {
+  it('writes the tests or else it gets the hose again.', function() {
+    expect(true).toBe(true);
+  });
+
+  it('can get an instance of the PadlockFactory -factory', inject(function() {
     expect(PadlockFactory).toBeDefined();
   }));
 
-  it("should allow to be extended via config an object", inject(function() {
+  it("should allow to be extended via an config object", inject(function() {
     spyOn(PadlockFactory, 'options');
     // Set fake options
     var opts = { authFailed: 'FAILED', authSuccess: 'SUCCESS' };
@@ -28,7 +32,7 @@ describe('factory: PadlockFactory', function() {
     expect(PadlockFactory.options).toHaveBeenCalled();
   }));
 
-  it("should broadcast event on a 401 http header", inject(function() {
+  it("should broadcast an unauthorized -event on a 401 http header", inject(function() {
     var callback = function(data, status) {
       expect(status).toBe(401);
     };
@@ -39,7 +43,7 @@ describe('factory: PadlockFactory', function() {
     $rootScope.$broadcast.reset();
   }));
 
-  it("should broadcast event on a 200 http header if PadlockOptions.authSuccess is set", inject(function() {
+  it("should broadcast an authorized event on a 200 http header if authSuccess is set", inject(function() {
     var callback = function(data, status) {
       expect(status).toBe(200);
     };
@@ -50,7 +54,7 @@ describe('factory: PadlockFactory', function() {
     $rootScope.$broadcast.reset();
   }));
 
-  it("should NOT broadcast event on a 200 http header if PadlockOptions.authSuccess is set to false", inject(function() {
+  it("should NOT broadcast an authorized event on a 200 http header if authSuccess is false", inject(function() {
     PadlockFactory.options({
         authSuccess: false
     });
