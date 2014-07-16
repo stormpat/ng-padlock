@@ -2,8 +2,8 @@
 'use strict';
 
 angular.module('ps.padlock', [])
-  .factory('PadlockFactory', ['$rootScope', '$q', '$location',
-    function($rootScope, $q, $location) {
+  .factory('PadlockFactory', ['$rootScope', '$q',
+    function($rootScope, $q) {
 
       var PadlockOptions = {
         authFailed: 'Padlock:unauthorized',
