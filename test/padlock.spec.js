@@ -52,17 +52,17 @@ describe('factory: PadlockFactory', function() {
   }));
 
   it("should NOT broadcast event on a 200 http header if PadlockOptions.authSuccess is set to false", inject(function() {
-      PadlockFactory.options({
-          authSuccess: false
-      });
-      var callback = function(data, status) {
-        expect(status).toBe(200);
-      };
-      $httpBackend.whenGET('/user-is-authed').respond(200);
-      $http.get('/user-is-authed').success(callback);
-      $httpBackend.flush();
-      expect($rootScope.$broadcast).not.toHaveBeenCalledWith('Padlock:authorized', jasmine.any(Object));
-      $rootScope.$broadcast.reset();
+    PadlockFactory.options({
+        authSuccess: false
+    });
+    var callback = function(data, status) {
+      expect(status).toBe(200);
+    };
+    $httpBackend.whenGET('/user-is-authed').respond(200);
+    $http.get('/user-is-authed').success(callback);
+    $httpBackend.flush();
+    expect($rootScope.$broadcast).not.toHaveBeenCalledWith('Padlock:authorized', jasmine.any(Object));
+    $rootScope.$broadcast.reset();
   }));
 
 });
